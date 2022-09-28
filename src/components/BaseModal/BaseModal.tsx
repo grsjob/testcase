@@ -18,9 +18,10 @@ const style = {
 interface BasicModalProps {
     children: React.ReactNode;
     isOpen: boolean
+    ariaDescription: string;
 }
 
-const BaseModal: FC<BasicModalProps> = ( { children, isOpen } ) => {
+const BaseModal: FC<BasicModalProps> = ( { children, isOpen, ariaDescription } ) => {
   const [ open, setOpen ] = React.useState( isOpen );
   const handleClose = () => setOpen( false );
 
@@ -29,8 +30,8 @@ const BaseModal: FC<BasicModalProps> = ( { children, isOpen } ) => {
       <Modal
         open={open}
         onClose={handleClose}
-        aria-labelledby="modal-modal-title"
-        aria-describedby="modal-modal-description"
+        aria-labelledby="Модальное окно"
+        aria-describedby={ariaDescription}
       >
         <Box sx={style}>
           {children}

@@ -9,7 +9,7 @@ interface Question {
     wants_comment: number;
     answers: Answer[]
 }
-interface ComponentUnderTest {
+export interface ComponentUnderTest {
     id: string;
     name: string;
     sort: number;
