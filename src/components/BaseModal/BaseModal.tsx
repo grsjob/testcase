@@ -16,7 +16,7 @@ const style = {
 };
 
 interface BasicModalProps {
-    children: React.ReactNode
+    children: React.ReactNode;
     isOpen: boolean
 }
 
