@@ -91,7 +91,7 @@
             { "blankLine": "always", "prev": "*", "next": "return" }
         ],
         "space-before-function-paren": ["error", "never"],
-        "space-in-parens": ["error", "always"],
+        "space-in-parens": ["error", "never"],
         "switch-colon-spacing": 2,
         "template-curly-spacing": 2,
         "template-tag-spacing": 2

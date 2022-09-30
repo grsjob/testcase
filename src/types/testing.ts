@@ -3,7 +3,7 @@ interface Answer{
     label: string;
     weight: number;
 }
-interface Question {
+export interface Question {
     id: string;
     title: string;
     wants_comment: number;

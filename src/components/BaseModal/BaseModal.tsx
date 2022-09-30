@@ -18,15 +18,21 @@ const style = {
 interface BasicModalProps {
     children: React.ReactNode;
     isOpen: boolean
+    onClose?: React.Dispatch<React.SetStateAction<boolean>> ;
     ariaDescription: string;
 }
 
-const BaseModal: FC<BasicModalProps> = ( { children, isOpen, ariaDescription } ) => {
-  const [ open, setOpen ] = React.useState( isOpen );
-  const handleClose = () => setOpen( false );
+const BaseModal: FC<BasicModalProps> = ({ children, isOpen, ariaDescription, onClose }) => {
+  const [ open, setOpen ] = React.useState(isOpen);
+  const handleClose = () => {
+    setOpen(false);
+    if(onClose) {
+      onClose(false);
+    }
+  };
 
   return (
-    <div>
+    <div className='modal'>
       <Modal
         open={open}
         onClose={handleClose}
