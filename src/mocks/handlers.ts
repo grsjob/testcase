@@ -77,62 +77,62 @@ export const handlers = [
               }
             ]
           },
-          // {
-          //   "id": "component__top-navigation-bar",
-          //   "name": "Верхняя навигация",
-          //   "sort": "1",
-          //   "questions": [
-          //     {
-          //       "id": "2",
-          //       "title": "Оцените удобство от 1 до 5?",
-          //       "wants_comment": "-1",
-          //       "answers": [
-          //         {
-          //           "id": "3",
-          //           "label": "1",
-          //           "weight": "0"
-          //         },
-          //         {
-          //           "id": "4",
-          //           "label": "2",
-          //           "weight": "1"
-          //         },
-          //         {
-          //           "id": "5",
-          //           "label": "3",
-          //           "weight": "2"
-          //         },
-          //         {
-          //           "id": "6",
-          //           "label": "4",
-          //           "weight": "3"
-          //         },
-          //         {
-          //           "id": "7",
-          //           "label": "5",
-          //           "weight": "4"
-          //         }
-          //       ]
-          //     },
-          //     {
-          //       "id": "1",
-          //       "title": "Нравится ли компонент?",
-          //       "wants_comment": "0",
-          //       "answers": [
-          //         {
-          //           "id": "2",
-          //           "label": "Да",
-          //           "weight": "1"
-          //         },
-          //         {
-          //           "id": "1",
-          //           "label": "Нет",
-          //           "weight": "0"
-          //         }
-          //       ]
-          //     }
-          //   ]
-          // },
+          {
+            "id": "component__top-navigation-bar",
+            "name": "Верхняя навигация",
+            "sort": "1",
+            "questions": [
+              {
+                "id": "2",
+                "title": "Оцените удобство от 1 до 5?",
+                "wants_comment": "-1",
+                "answers": [
+                  {
+                    "id": "3",
+                    "label": "1",
+                    "weight": "0"
+                  },
+                  {
+                    "id": "4",
+                    "label": "2",
+                    "weight": "1"
+                  },
+                  {
+                    "id": "5",
+                    "label": "3",
+                    "weight": "2"
+                  },
+                  {
+                    "id": "6",
+                    "label": "4",
+                    "weight": "3"
+                  },
+                  {
+                    "id": "7",
+                    "label": "5",
+                    "weight": "4"
+                  }
+                ]
+              },
+              {
+                "id": "1",
+                "title": "Нравится ли компонент?",
+                "wants_comment": "0",
+                "answers": [
+                  {
+                    "id": "2",
+                    "label": "Да",
+                    "weight": "1"
+                  },
+                  {
+                    "id": "1",
+                    "label": "Нет",
+                    "weight": "0"
+                  }
+                ]
+              }
+            ]
+          },
           // {
           //   "id": "component__search-box",
           //   "name": "Поиск",

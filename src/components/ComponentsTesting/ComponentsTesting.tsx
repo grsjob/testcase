@@ -9,6 +9,11 @@ const highlightComponent = (componentNode: HTMLElement) => {
   componentNode.style.backgroundColor = "rgba(246,82,72,.8)";
 };
 
+const removeHighlightComponent = (componentNode: HTMLElement) => {
+  componentNode.style.boxShadow = "0px 0px 20px 0px rgba(246,82,72,.8)";
+  componentNode.style.backgroundColor = "yellow";
+};
+
 
 interface ComponentsTestingProps {
   children: React.ReactNode
@@ -18,6 +23,8 @@ interface ComponentsTestingProps {
 const ComponentsTesting: FC<ComponentsTestingProps> = ({ children }) => {
   const [ testingData, setTestingData ] = useState<TestinComponentsResponse>();
   const [ questions, setQuestions ] = useState<Question[] | null>(null);
+  const [ isSend, setIsSend ] = useState<"send" | "dont-send">("dont-send");
+  const [ component, setComponent ] = useState< ComponentUnderTest | null>(null);
   const [ isModalComponentTestingOpen, setIsModalComponentTestingOpen ] = useState(false);
 
   const listener = (e:MouseEvent) => {
@@ -26,17 +33,27 @@ const ComponentsTesting: FC<ComponentsTestingProps> = ({ children }) => {
     setIsModalComponentTestingOpen(true);
   };
 
+
+  const testing = async(componentNode: HTMLElement, component: ComponentUnderTest) => {
+    highlightComponent(componentNode);
+    setQuestions(component.questions);
+    componentNode.addEventListener("click", listener);
+
+    return new Promise<void>(resolve => {
+      if(isSend === "send") {
+        resolve();
+      }
+    });
+  };
+
+
   const addComponentsInTest = async(components: ComponentUnderTest[]) => {
     for await (const component of components){
       const componentNode = document.querySelector(`[data-id=${component.id}]`) as HTMLElement;
 
       if(componentNode){
-        highlightComponent(componentNode);
-        setQuestions(component.questions);
-
-        if(questions){
-          componentNode.addEventListener("click", listener);
-        }
+        setComponent(component);
+        await testing(componentNode, component);
       }
     }
   };
@@ -58,7 +75,7 @@ const ComponentsTesting: FC<ComponentsTestingProps> = ({ children }) => {
     if(testingData) {
       addComponentsInTest(testingData.components);
     }
-  }, [ testingData, questions ]);
+  }, [ testingData ]);
 
   return (
     <div>
@@ -72,7 +89,9 @@ const ComponentsTesting: FC<ComponentsTestingProps> = ({ children }) => {
           <BaseModal isOpen={isModalComponentTestingOpen}
             ariaDescription='Тест компонента'
             onClose={setIsModalComponentTestingOpen}>
-            <TestingForm questions={questions} />
+            <TestingForm questions={questions}
+              setIsModalComponentTestingOpen={setIsModalComponentTestingOpen}
+            />
           </BaseModal>
       }
     </div>

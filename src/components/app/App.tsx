@@ -28,12 +28,12 @@ function Copyright() {
 const drawerWidth = 256;
 
 const App = () => {
-  const [ mobileOpen, setMobileOpen ] = React.useState( false );
-  const isSmUp = useMediaQuery( theme.breakpoints.up( "sm" ) );
+  const [ mobileOpen, setMobileOpen ] = React.useState(false);
+  const isSmUp = useMediaQuery(theme.breakpoints.up("sm"));
 
 
   const handleDrawerToggle = () => {
-    setMobileOpen( !mobileOpen );
+    setMobileOpen(!mobileOpen);
   };
 
   return (

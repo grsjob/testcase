@@ -1,4 +1,4 @@
-import React, { FC } from "react";
+import React, { FC, useEffect } from "react";
 import { Question } from "../../types/testing";
 import { useForm, Controller } from "react-hook-form";
 import { FormControlLabel, Radio, RadioGroup } from "@mui/material";
@@ -7,17 +7,22 @@ import { ErrorMessage } from "@hookform/error-message";
 
 interface TestingFormProps {
     questions: Question[]
+    setIsModalComponentTestingOpen: React.Dispatch<React.SetStateAction<boolean>>
 }
 
-const TestingForm: FC<TestingFormProps> = ({ questions }) => {
-  const { control, handleSubmit, formState: { errors } } = useForm();
+const TestingForm: FC<TestingFormProps> = ({
+  questions ,
+  setIsModalComponentTestingOpen
+}) => {
+  const { control, handleSubmit, reset, formState: { errors, isSubmitted } } = useForm();
+
 
   const onSubmit = (data: unknown) => {
     console.log(JSON.stringify(data));
+    console.log(isSubmitted);
+    setIsModalComponentTestingOpen(false);
+    reset();
   };
-  // Questions.forEach((question, index) => {
-  //     question.
-  // })
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
