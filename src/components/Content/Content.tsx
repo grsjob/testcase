@@ -9,7 +9,7 @@ export default function Content() {
     <Paper sx={{ maxWidth: 936,
       margin: "auto",
       overflow: "hidden" }}>
-      <Card data-id='component__card'>
+      <Card className='component__card'>
         <CardContent>
           <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
                     Word of the Day

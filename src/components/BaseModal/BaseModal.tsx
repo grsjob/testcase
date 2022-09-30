@@ -1,7 +1,7 @@
 import * as React from "react";
 import Box from "@mui/material/Box";
 import Modal from "@mui/material/Modal";
-import { FC } from "react";
+import { FC, useEffect } from "react";
 
 const style = {
   position: "absolute" as const,
@@ -27,14 +27,18 @@ const BaseModal: FC<BasicModalProps> = ({ children, isOpen, ariaDescription, onC
   const handleClose = () => {
     setOpen(false);
     if(onClose) {
-      onClose(false);
+      onClose(true);
     }
   };
+
+  useEffect(() => {
+    isOpen ? setOpen(true) : setOpen(false);
+  }, [ isOpen ]);
 
   return (
     <div className='modal'>
       <Modal
-        open={open}
+        open={isOpen || open}
         onClose={handleClose}
         aria-labelledby="Модальное окно"
         aria-describedby={ariaDescription}

@@ -1,6 +1,6 @@
 import { createTheme } from "@mui/material/styles";
 
-export let theme = createTheme( {
+export let theme = createTheme({
   palette: {
     primary: {
       light: "#63ccff",
@@ -10,7 +10,7 @@ export let theme = createTheme( {
   },
   typography: {
     h5: {
-      fontWeight: 500,
+      fontWeight: 500 ,
       fontSize: 26,
       letterSpacing: 0.5,
     },
@@ -30,7 +30,7 @@ export let theme = createTheme( {
       minHeight: 48,
     },
   },
-} );
+});
 
 theme = {
   ...theme,
@@ -58,7 +58,7 @@ theme = {
     MuiTabs: {
       styleOverrides: {
         root: {
-          marginLeft: theme.spacing( 1 ),
+          marginLeft: theme.spacing(1),
         },
         indicator: {
           height: 3,
@@ -75,7 +75,7 @@ theme = {
           margin: "0 16px",
           minWidth: 0,
           padding: 0,
-          [theme.breakpoints.up( "md" )]: {
+          [theme.breakpoints.up("md")]: {
             padding: 0,
             minWidth: 0,
           },
@@ -85,7 +85,7 @@ theme = {
     MuiIconButton: {
       styleOverrides: {
         root: {
-          padding: theme.spacing( 1 ),
+          padding: theme.spacing(1),
         },
       },
     },
@@ -125,7 +125,7 @@ theme = {
         root: {
           color: "inherit",
           minWidth: "auto",
-          marginRight: theme.spacing( 2 ),
+          marginRight: theme.spacing(2),
           "& svg": {
             fontSize: 20,
           },

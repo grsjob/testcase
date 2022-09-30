@@ -20,13 +20,13 @@ interface HeaderProps {
     onDrawerToggle: () => void;
 }
 
-export default function Header( props: HeaderProps ) {
+export default function Header(props: HeaderProps) {
   const { onDrawerToggle } = props;
 
   return (
     <React.Fragment>
       <AppBar color="primary" position="sticky" elevation={0}>
-        <Toolbar>
+        <Toolbar className='component__top-navigation-bar' >
           <Grid container spacing={1} alignItems="center">
             <Grid sx={{ display: { sm: "none",
               xs: "block" } }} item>

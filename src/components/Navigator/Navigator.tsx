@@ -69,7 +69,7 @@ const itemCategory = {
   px: 3,
 };
 
-export default function Navigator( props: DrawerProps ) {
+export default function Navigator(props: DrawerProps) {
   const { ...other } = props;
 
   return (
@@ -88,23 +88,23 @@ export default function Navigator( props: DrawerProps ) {
           </ListItemIcon>
           <ListItemText>Project Overview</ListItemText>
         </ListItem>
-        {categories.map( ( { id, children } ) => (
+        {categories.map(({ id, children }) => (
           <Box key={id} sx={{ bgcolor: "#101F33" }}>
             <ListItem sx={{ py: 2,
               px: 3 }}>
               <ListItemText sx={{ color: "#fff" }}>{id}</ListItemText>
             </ListItem>
-            {children.map( ( { id: childId, icon, active } ) => (
+            {children.map(({ id: childId, icon, active }) => (
               <ListItem disablePadding key={childId}>
                 <ListItemButton selected={active} sx={item}>
                   <ListItemIcon>{icon}</ListItemIcon>
                   <ListItemText>{childId}</ListItemText>
                 </ListItemButton>
               </ListItem>
-            ) )}
+            ))}
             <Divider sx={{ mt: 2 }} />
           </Box>
-        ) )}
+        ))}
       </List>
     </Drawer>
   );
