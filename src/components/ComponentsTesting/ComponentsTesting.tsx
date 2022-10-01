@@ -23,7 +23,6 @@ const StartButton: FC<TestTourProps> = ({ setIsOpenModal }) => {
   };
 
   return (
-    // <button onClick={onClickHandler}>Старт</button>
     <Button variant="outlined" onClick={onClickHandler}>Старт</Button>
   );
 };
@@ -65,7 +64,7 @@ const ComponentsTesting: FC<ComponentsTestingProps> = ({ children }) => {
     <>
       {steps ?
         <TourProvider steps={steps} disableInteraction={true} showNavigation={false} showCloseButton={false} 
-          scrollSmooth={true}>
+          scrollSmooth={true} >
           {children}
           {testingData &&
             <BaseModal ariaDescription='Тестовое модальное окно' isOpen={isOpenStartModal} >
