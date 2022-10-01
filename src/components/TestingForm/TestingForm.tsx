@@ -4,6 +4,7 @@ import { useForm, Controller } from "react-hook-form";
 import { FormControlLabel, Radio, RadioGroup } from "@mui/material";
 import { getUniqID } from "../../helpers";
 import { ErrorMessage } from "@hookform/error-message";
+import { useTour } from "@reactour/tour";
 
 interface TestingFormProps {
     questions: Question[]
@@ -11,13 +12,14 @@ interface TestingFormProps {
 
 const TestingForm: FC<TestingFormProps> = ({ questions }) => {
   const { control, handleSubmit, formState: { errors } } = useForm();
+  const { currentStep, setCurrentStep } = useTour();
+
 
   const onSubmit = (data: unknown) => {
     console.log(JSON.stringify(data));
+    setCurrentStep(currentStep+1);
   };
-  // Questions.forEach((question, index) => {
-  //     question.
-  // })
+
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
