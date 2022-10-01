@@ -4,6 +4,7 @@ import BaseModal from "../BaseModal/BaseModal";
 import { TestinComponentsResponse } from "../../types/testing";
 import TestingForm from "../TestingForm/TestingForm";
 import { StepType, TourProvider, useTour } from "@reactour/tour";
+import { Button } from "@mui/material";
 
 
 interface ComponentsTestingProps {
@@ -22,7 +23,8 @@ const StartButton: FC<TestTourProps> = ({ setIsOpenModal }) => {
   };
 
   return (
-    <button onClick={onClickHandler}>Старт</button>
+    // <button onClick={onClickHandler}>Старт</button>
+    <Button variant="outlined" onClick={onClickHandler}>Старт</Button>
   );
 };
 
@@ -67,7 +69,7 @@ const ComponentsTesting: FC<ComponentsTestingProps> = ({ children }) => {
           {children}
           {testingData &&
             <BaseModal ariaDescription='Тестовое модальное окно' isOpen={isOpenStartModal} >
-              Да начнется тест!!!
+              <p>Да начнется тест!!!</p>
               <StartButton setIsOpenModal={setIsOpenStartModal}/>
             </BaseModal>
           }

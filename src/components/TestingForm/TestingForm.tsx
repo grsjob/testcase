@@ -1,14 +1,14 @@
 import React, { FC, useState } from "react";
 import { Question } from "../../types/testing";
 import { useForm, Controller } from "react-hook-form";
-import { FormControlLabel, Radio, RadioGroup, TextField } from "@mui/material";
+import { Button, FormControlLabel, Radio, RadioGroup, TextField } from "@mui/material";
 import { getUniqID } from "../../helpers";
 import { ErrorMessage } from "@hookform/error-message";
 import { useTour } from "@reactour/tour";
 import "./style.css";
 
 interface TestingFormProps {
-    questions: Question[]
+  questions: Question[]
 }
 
 const TestingForm: FC<TestingFormProps> = ({ questions }) => {
@@ -83,7 +83,13 @@ const TestingForm: FC<TestingFormProps> = ({ questions }) => {
           </section>
         ))
       }
-      <button className="button">отправить</button>
+      <Controller
+        render={({ field }) => (
+          <Button variant="outlined" className='button' {...field} type="submit">Отправить</Button>
+        )}
+        name="submit-button"
+        control={control}
+      />
     </form>
   );
 };
