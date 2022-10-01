@@ -31,7 +31,6 @@ const ComponentsTesting: FC<ComponentsTestingProps> = ({ children }) => {
   const [ steps, setSteps ] = useState<StepType[]>();
   const [ isOpenStartModal, setIsOpenStartModal ] = useState(true);
 
-
   const getTestingData = async() => {
     const dataService = new DataService();
     const data = await dataService.getTestingComponentsList() as TestinComponentsResponse | undefined;
@@ -63,7 +62,8 @@ const ComponentsTesting: FC<ComponentsTestingProps> = ({ children }) => {
   return (
     <>
       {steps ?
-        <TourProvider steps={steps} disableInteraction={true} showNavigation={false} showCloseButton={false}>
+        <TourProvider steps={steps} disableInteraction={true} showNavigation={false} showCloseButton={false} 
+          scrollSmooth={true}>
           {children}
           {testingData &&
             <BaseModal ariaDescription='Тестовое модальное окно' isOpen={isOpenStartModal} >

@@ -5,6 +5,7 @@ import { FormControlLabel, Radio, RadioGroup } from "@mui/material";
 import { getUniqID } from "../../helpers";
 import { ErrorMessage } from "@hookform/error-message";
 import { useTour } from "@reactour/tour";
+import "./style.css";
 
 interface TestingFormProps {
     questions: Question[]
@@ -22,7 +23,7 @@ const TestingForm: FC<TestingFormProps> = ({ questions }) => {
 
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
+    <form onSubmit={handleSubmit(onSubmit)} className='testing-form'>
       {
         questions.map((question) => (
           <section key={getUniqID()}>
