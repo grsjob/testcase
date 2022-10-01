@@ -1,7 +1,7 @@
-import React, { FC } from "react";
+import React, { FC, useState } from "react";
 import { Question } from "../../types/testing";
 import { useForm, Controller } from "react-hook-form";
-import { FormControlLabel, Radio, RadioGroup } from "@mui/material";
+import { FormControlLabel, Radio, RadioGroup, TextField } from "@mui/material";
 import { getUniqID } from "../../helpers";
 import { ErrorMessage } from "@hookform/error-message";
 import { useTour } from "@reactour/tour";
@@ -12,13 +12,26 @@ interface TestingFormProps {
 }
 
 const TestingForm: FC<TestingFormProps> = ({ questions }) => {
-  const { control, handleSubmit, formState: { errors } } = useForm();
+  const { control, handleSubmit, reset, formState: { errors } } = useForm();
   const { currentStep, setCurrentStep } = useTour();
+  const [ visibleCommentsField, setVisibleCommentsField ] = useState<string[]>([]);
 
 
   const onSubmit = (data: unknown) => {
     console.log(JSON.stringify(data));
     setCurrentStep(currentStep+1);
+    reset();
+  };
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const targetQuestion = questions.find(question => question.id === e.target.name);
+    const targetAnswer = targetQuestion!.answers.find(answer => answer.id === e.target.value);
+
+    if(targetAnswer && targetQuestion && targetAnswer.weight <= targetQuestion.wants_comment){
+      setVisibleCommentsField(prevState => [ ...prevState, `${targetQuestion.id}_comment` ]);
+    } else {
+      setVisibleCommentsField(visibleCommentsField.filter(el => el !== `${targetQuestion!.id}_comment`));
+    }
   };
 
 
@@ -38,7 +51,7 @@ const TestingForm: FC<TestingFormProps> = ({ questions }) => {
                     <FormControlLabel
                       key={getUniqID()}
                       value={answer.id}
-                      control={<Radio />}
+                      control={<Radio name={question.id} onChange={handleChange}/>}
                       label={answer.label}
                     />
                   ))}
@@ -53,6 +66,20 @@ const TestingForm: FC<TestingFormProps> = ({ questions }) => {
               control={control}
               defaultValue=""
             />
+            {(question.wants_comment >= 0 && visibleCommentsField.includes(`${question.id}_comment`)) ?
+              <Controller
+                name={`${question.id}_comment`}
+                control={control}
+                render={({ field }) => <TextField
+                  {...field}
+                  id="outlined-multiline-flexible"
+                  label="Комментарий"
+                  multiline
+                  maxRows={3}
+                  margin="normal"
+                />}
+              /> : null
+            }
           </section>
         ))
       }
