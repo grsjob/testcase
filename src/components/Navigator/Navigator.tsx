@@ -74,7 +74,7 @@ export default function Navigator(props: DrawerProps) {
 
   return (
     <Drawer variant="permanent" {...other}>
-      <List disablePadding>
+      <List disablePadding className='component__bottom-nav-bar'>
         <ListItem sx={{ ...item,
           ...itemCategory,
           fontSize: 22,

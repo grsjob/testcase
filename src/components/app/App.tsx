@@ -45,6 +45,7 @@ const App = () => {
         }}>
           <CssBaseline/>
           <Box
+            className='component__search-box'
             component="nav"
             sx={{
               width: { sm: drawerWidth },
